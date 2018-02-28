@@ -6,7 +6,8 @@ module Main (
 ) where
 
 main :: IO ()
-main = print $ removeDuplicates [1,1,1,1,2,1,2,3,45,6,54,3,1,2345,3,21,1]
+main = print $ pack ['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']
+
 
 last' [] = error "empty list"
 last' [x] = x
@@ -40,3 +41,11 @@ removeDuplicates (x:xs) = x : removeAll x xs
 
 removeAll _ [] = []
 removeAll y (x:xs) = if y == x then removeAll y xs else x : removeAll y xs
+
+pack = foldr packPom [[]]
+
+packPom elem [[]] = [[elem]]
+packPom elem ((h:t):accs) =
+    if h == elem
+    then (elem:h:t):accs
+    else [elem]:(h:t):accs
