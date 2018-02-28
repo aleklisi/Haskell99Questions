@@ -1,0 +1,14 @@
+Version of workspace file format:
+               2
+Time of storage:
+               "Wed Feb 28 23:38:59 \238rodkowoeuropejski czas stand. 2018"
+Name of the workspace:
+               "11to20answer"
+File paths of contained packages:
+               ["11to20answer\\11to20answer.cabal"]
+Maybe file path of an active package:
+               Just "11to20answer\\11to20answer.cabal"
+Maybe name of an active executable:
+               Nothing
+Version Control System configurations for packages:
+               fromList []
