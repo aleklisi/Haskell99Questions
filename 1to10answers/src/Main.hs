@@ -6,8 +6,9 @@ module Main (
 ) where
 
 main :: IO ()
-main = print $ pack ['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']
+main = print $ encode ['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']
 
+main2 = print $ pack ['a', 'a', 'a', 'a', 'b', 'c', 'c', 'a', 'a', 'd', 'e', 'e', 'e', 'e']
 
 last' [] = error "empty list"
 last' [x] = x
@@ -45,7 +46,14 @@ removeAll y (x:xs) = if y == x then removeAll y xs else x : removeAll y xs
 pack = foldr packPom [[]]
 
 packPom elem [[]] = [[elem]]
-packPom elem ((h:t):accs) =
-    if h == elem
+packPom elem ((h:t):accs) = if h == elem
     then (elem:h:t):accs
     else [elem]:(h:t):accs
+
+
+encode = foldr encodePom []
+
+encodePom elem [] = [(1,elem)]
+encodePom elem ((num,x):xs) = if x == elem
+    then (num + 1,x):xs
+    else (1,elem):(num,x):xs
